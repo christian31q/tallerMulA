@@ -1,27 +1,33 @@
 <?php
-
 include "conexion.php";
 
-// Consulta SQL para seleccionar datos de la tabla de imágenes
+// Consulta SQL
 $sql = "SELECT codigo, foto, nombre, sangre FROM carnets";
 $result = $conn->query($sql);
 
-// Array para almacenar los datos de las imágenes
-$carnets  = array();
-
-// Verificar si hay resultados y agregarlos al array de productos
+// Verificar si hay resultados
 if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $carnet = array(
-            "codigo" => $row["codigo"],
-            "foto" => $row["foto"],
-            "nombre" => $row["nombre"],
-            "sangre" => $row["sangre"]
-        );
-        array_push($carnets, $carnet);
+    // Inicializar un array para almacenar los resultados
+    $data = array();
+
+    // Iterar sobre los resultados y agregarlos al array
+    while($row = $result->fetch_assoc()) {
+        $data[] = $row;
     }
+
+    // Convertir el array a formato JSON
+    $json_data = json_encode($data);
+
+    // Establecer el encabezado de respuesta como JSON
+    header('Content-Type: application/json');
+
+    // Imprimir el JSON
+    echo $json_data;
+} else {
+    // Si no hay resultados, imprimir un mensaje
+    echo "No se encontraron resultados.";
 }
 
-// Imprimir el array en formato JSON
-echo json_encode($carnets);
+// Cerrar la conexión
+$conn->close();
 ?>
