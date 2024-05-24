@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de carga de archivos</title>
+</head>
+<body>
+    <form action="carnet.php" method="post" enctype="multipart/form-data">
+        <label for="foto">Selecciona una foto:</label><br>
+        <input type="file" id="foto" name="foto"><br>
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre"><br>
+        <label for="codigo">Código:</label><br>
+        <input type="text" id="codigo" name="codigo"><br>
+        <label for="sangre">Tipo de sangre:</label><br>
+        <input type="text" id="sangre" name="sangre"><br><br>
+        <input type="submit" value="Subir Foto">
+    </form>
+</body>
+</html>
