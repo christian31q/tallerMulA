@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>Crear Cuenta</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+  <div class="signup">
+    <div class="form-container">
+      <form id="myForm" action="/" class="form">
+        <label for="titulo" class="label">Nombre</label>
+        <input type="text" id="titulo" placeholder=" " class="input input-title">
+        <label for="descripcion" class="label">Codigo</label>
+        <input type="text" id="descripcion" placeholder=" " class="input input-description">
+        <label for="img" class="label">Imagen</label>
+        <input type="file" id="img" placeholder="" class="input input-img">
+        <button type="submit" class="primary-button login-button">Subir imagen</button>
+      </form>
+    </div>
+  </div>
+  <div id="gallery"></div>
+  <div id="moreInfo" style="display: none;"></div>
+
+  <!-- Mensaje emergente -->
+  <div id="popup" style="display: block;">
+    <p id="popupMessage"></p>
+  </div>
+
+  <script src="script.js"></script> <!-- Enlace al archivo JavaScript -->
+</body>
+</html>
+
