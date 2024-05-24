@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>Crear Cuenta</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+  <div class="signup">
+    <div class="form-container">
+      <form id="myForm" action="/" class="form">
+        <label for="nombre" class="label">Nombres y apellidos</label>
+        <input type="text" id="nombre" placeholder=" " class="input input-nombre">
+        <label for="codigo" class="label">Codigo</label>
+        <input type="text" id="codigo" placeholder=" " class="input input-description">
+        <label for="tiposanguineo" class="label">Tipo Sanguineo</label>
+        <input type="text" id="tiposanguineo" placeholder=" " class="input input-tiposanguineo">
+        <label for="programa" class="label">Programa</label>
+        <input type="text" id="programa" placeholder=" " class="input input-programa">
+        <label for="img" class="label">Imagen</label>
+        <input type="file" id="img" placeholder="" class="input input-img">
+        <button type="submit" class="primary-button login-button">Subir imagen</button>
+      </form>
+    </div>
+  </div>
+  <div id="gallery"></div>
+  <div id="moreInfo" style="display: none;"></div>
+
+  <script src="script.js"></script> <!-- Enlace al archivo JavaScript -->
+</body>
+</html>
