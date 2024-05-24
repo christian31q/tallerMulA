@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Carnet</title>
+    <link rel="stylesheet" href="Style_Register.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Registro de Carnet</h2>
+        <form action="visualizacion.html" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" name="codigo" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo_sangre">Tipo de Sangre:</label>
+                <input type="text" id="tipo_sangre" name="tipo_sangre" required>
+            </div>
+            <div class="form-group">
+                <label for="foto">Foto:</label>
+                <input type="file" id="foto" name="foto" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Registrar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
