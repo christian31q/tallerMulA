@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú de Estudiantes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    select {
+      margin: 20px auto;
+      display: block;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 10px;
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background-color: #f9f9f9;
+    }
+
+    #detalle {
+      margin: 20px auto;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .student-info {
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .btn-ver {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Menú de Estudiantes</h1>
+
+  <label for="opciones">Selecciona un estudiante:</label>
+  <select id="opciones" onchange="mostrarInfo()">
+    <option value="0">Selecciona...</option>
+    <option value="1">Estudiantes</option>
+  </select>
+
+  <div id="estudiantes" class="hidden">
+    <h2>Estudiantes</h2>
+    <ul id="listaEstudiantes">
+      <li onclick="mostrarDetalle(this, 'Juan', 'Pérez', '123456', 'A+', 'Ingeniería')">Juan Pérez</li>
+      <li onclick="mostrarDetalle(this, 'María', 'Gómez', '789012', 'B-', 'Medicina')">María Gómez</li>
+      <li onclick="mostrarDetalle(this, 'Pedro', 'Martínez', '654321', 'O+', 'Arquitectura')">Pedro Martínez</li>
+      <li onclick="mostrarDetalle(this, 'Laura', 'López', '135792', 'AB-', 'Derecho')">Laura López</li>
+      <li onclick="mostrarDetalle(this, 'Carlos', 'Sánchez', '246813', 'A-', 'Economía')">Carlos Sánchez</li>
+      <li onclick="mostrarDetalle(this, 'Ana', 'Hernández', '112233', 'B+', 'Medicina')">Ana Hernández</li>
+      <li onclick="mostrarDetalle(this, 'Daniel', 'García', '445566', 'O-', 'Ingeniería')">Daniel García</li>
+      <li onclick="mostrarDetalle(this, 'Sofía', 'Rodríguez', '778899', 'A+', 'Arquitectura')">Sofía Rodríguez</li>
+      <li onclick="mostrarDetalle(this, 'Diego', 'Pérez', '990011', 'B-', 'Derecho')">Diego Pérez</li>
+      <li onclick="mostrarDetalle(this, 'Julia', 'Martínez', '112233', 'AB+', 'Economía')">Julia Martínez</li>
+      <li onclick="mostrarDetalle(this, 'Luis', 'Gómez', '445566', 'A-', 'Medicina')">Luis Gómez</li>
+      <li onclick="mostrarDetalle(this, 'Lucía', 'Sánchez', '778899', 'O-', 'Ingeniería')">Lucía Sánchez</li>
+      <li onclick="mostrarDetalle(this, 'Mario', 'Hernández', '990011', 'A+', 'Arquitectura')">Mario Hernández</li>
+      <li onclick="mostrarDetalle(this, 'Elena', 'García', '112233', 'B-', 'Derecho')">Elena García</li>
+      <li onclick="mostrarDetalle(this, 'Gabriel', 'Rodríguez', '445566', 'AB+', 'Economía')">Gabriel Rodríguez</li>
+      <li onclick="mostrarDetalle(this, 'Carolina', 'Pérez', '778899', 'O-', 'Medicina')">Carolina Pérez</li>
+      <li onclick="mostrarDetalle(this, 'Andrés', 'Martínez', '990011', 'A+', 'Ingeniería')">Andrés Martínez</li>
+      <li onclick="mostrarDetalle(this, 'Valentina', 'López', '112233', 'B-', 'Arquitectura')">Valentina López</li>
+      <li onclick="mostrarDetalle(this, 'José', 'Sánchez', '445566', 'AB-', 'Derecho')">José Sánchez</li>
+      <li onclick="mostrarDetalle(this, 'Marina', 'Hernández', '778899', 'A-', 'Economía')">Marina Hernández</li>
+    </ul>
+  </div>
+
+  <div id="detalle" class="hidden">
+    <h2>Detalle del Estudiante</h2>
+    <div class="student-info">
+      <label for="nombre">Nombre:</label>
+      <span id="nombre"></span>
+    </div>
+    <div class="student-info">
+      <label for="apellido">Apellido:</label>
+      <span id="apellido"></span>
+    </div>
+    <div class="student-info">
+      <label for="codigo">Código Estudiantil:</label>
+      <span id="codigo"></span>
+    </div>
+    <div class="student-info">
+      <label for="tipoSangre">Tipo de Sangre:</label>
+      <span id="tipoSangre"></span>
+    </div>
+    <div class="student-info">
+      <label for="carrera">Carrera:</label>
+      <span id="carrera"></span>
+    </div>
+    <button class="btn-ver" onclick="mostrarCarnet()">Ver Carnet</button>
+  </div>
+
+  <script>
+    let carnetWindow;
+
+    function mostrarInfo() {
+      var seleccion = document.getElementById("opciones").value;
+      if (seleccion === "1") {
+        document.getElementById("estudiantes").classList.remove("hidden");
+      } else {
+        document.getElementById("estudiantes").classList.add("hidden");
+      }
+    }
+
+    function mostrarDetalle(estudiante, nombre, apellido, codigo, tipoSangre, carrera) {
+      var nombreEstudiante = nombre + " " + apellido;
+      document.getElementById("detalle").classList.remove("hidden");
+      document.getElementById("nombre").textContent = nombre;
+      document.getElementById("apellido").textContent = apellido;
+      document.getElementById("codigo").textContent = codigo;
+      document.getElementById("tipoSangre").textContent = tipoSangre;
+      document.getElementById("carrera").textContent = carrera;
+    }
+
+    function mostrarCarnet() {
+      carnetWindow = window.open("carnet_estudiante.jpg", "_blank");
+    }
+  </script>
+</body>
+</html>
