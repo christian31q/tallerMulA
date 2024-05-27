@@ -7,16 +7,16 @@ $result = $conn->query($sql);
 
 // Verificar si hay resultados
 if ($result->num_rows > 0) {
-    // Inicializar un array para almacenar los resultados
-    $data = array();
+    // Inicializar un objeto para almacenar los resultados
+    $data = new stdClass();
 
-    // Iterar sobre los resultados y agregarlos al array
+    // Iterar sobre los resultados y agregarlos al objeto
     while($row = $result->fetch_assoc()) {
-        $data[] = $row;
+        $data->{$row["codigo"]} = $row;
     }
 
-    // Convertir el array a formato JSON
-    $json_data = json_encode($data);
+    // Convertir el objeto a formato JSON
+    $json_data = json_encode($data, JSON_FORCE_OBJECT);
 
     // Establecer el encabezado de respuesta como JSON
     header('Content-Type: application/json');
